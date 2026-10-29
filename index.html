@@ -1,0 +1,2384 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌷 Thiệp Mời Tốt Nghiệp – Biện Thị Trúc Phương</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌷</text></svg>"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===== RESET & BASE ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --font-body: "Be Vietnam Pro", sans-serif;
+        --font-heading: "Playfair Display", serif;
+        --font-script: "Dancing Script", cursive;
+        --blue-pastel: #b8d8f0;
+        --blue-light: #dceefb;
+        --green-pastel: #c5e8c5;
+        --green-light: #e0f4e0;
+        --pink-pastel: #f9d0da;
+        --pink-light: #fce8ed;
+        --pink-deep: #e8a0b0;
+        --purple-pastel: #d8c8f0;
+        --cream: #fffaf5;
+        --text-dark: #4a4060;
+        --text-mid: #6b7a8d;
+        --gold: #c9a84c;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: linear-gradient(
+          135deg,
+          var(--blue-light) 0%,
+          var(--pink-light) 40%,
+          var(--green-light) 80%,
+          var(--blue-light) 100%
+        );
+        min-height: 100vh;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+
+      /* ===== FLOATING STICKERS ===== */
+      .sticker-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .sticker {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.35;
+        animation: floatSticker linear infinite;
+        user-select: none;
+      }
+
+      @keyframes floatSticker {
+        0% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+          opacity: 0.35;
+        }
+        25% {
+          transform: translateY(-18px) rotate(8deg) scale(1.08);
+          opacity: 0.45;
+        }
+        50% {
+          transform: translateY(-8px) rotate(-4deg) scale(0.96);
+          opacity: 0.35;
+        }
+        75% {
+          transform: translateY(-22px) rotate(12deg) scale(1.05);
+          opacity: 0.42;
+        }
+        100% {
+          transform: translateY(0px) rotate(0deg) scale(1);
+          opacity: 0.35;
+        }
+      }
+
+      /* ===== LOGIN PAGE ===== */
+      #login-page {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        background: linear-gradient(
+          160deg,
+          var(--blue-light) 0%,
+          var(--pink-light) 50%,
+          var(--green-light) 100%
+        );
+      }
+
+      .login-card {
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(20px);
+        border-radius: 32px;
+        padding: 52px 44px 44px;
+        max-width: 420px;
+        width: 90%;
+        text-align: center;
+        box-shadow:
+          0 20px 60px rgba(180, 160, 200, 0.25),
+          0 2px 8px rgba(0, 0, 0, 0.06);
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .login-card::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -40px;
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          var(--pink-pastel) 0%,
+          transparent 70%
+        );
+        opacity: 0.6;
+      }
+      .login-card::after {
+        content: "";
+        position: absolute;
+        bottom: -50px;
+        left: -30px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          var(--blue-pastel) 0%,
+          transparent 70%
+        );
+        opacity: 0.5;
+      }
+
+      .login-icon {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+        display: block;
+        animation: bobIcon 2.4s ease-in-out infinite;
+      }
+      @keyframes bobIcon {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .login-title {
+        font-family: var(--font-script);
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 6px;
+      }
+      .login-sub {
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        margin-bottom: 28px;
+        line-height: 1.6;
+      }
+
+      .login-label {
+        display: block;
+        text-align: left;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        letter-spacing: 0.3px;
+      }
+
+      .login-input {
+        width: 100%;
+        padding: 14px 18px;
+        border: 2px solid var(--blue-pastel);
+        border-radius: 16px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--text-dark);
+        outline: none;
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+        margin-bottom: 20px;
+      }
+      .login-input:focus {
+        border-color: var(--pink-deep);
+        box-shadow: 0 0 0 3px rgba(232, 160, 176, 0.2);
+      }
+      .login-input::placeholder {
+        color: #bbb;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel) 0%,
+          var(--blue-pastel) 100%
+        );
+        border: none;
+        border-radius: 16px;
+        font-family: var(--font-body);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 4px 16px rgba(180, 160, 200, 0.3);
+      }
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(180, 160, 200, 0.4);
+      }
+      .login-btn:active {
+        transform: translateY(0);
+      }
+
+      .login-error {
+        color: #e05555;
+        font-size: 0.83rem;
+        margin-top: 10px;
+        display: none;
+      }
+
+      /* ===== MAIN INVITATION ===== */
+      #invitation {
+        display: none;
+        position: relative;
+        z-index: 1;
+        padding: 40px 16px 80px;
+      }
+
+      /* ===== CARD WRAPPER ===== */
+      .card-wrapper {
+        max-width: 780px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(24px);
+        border-radius: 40px;
+        padding: 56px 48px 52px;
+        box-shadow:
+          0 30px 80px rgba(160, 140, 200, 0.2),
+          0 4px 16px rgba(0, 0, 0, 0.06);
+        border: 2px solid rgba(255, 255, 255, 0.85);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--pink-pastel),
+          var(--blue-pastel),
+          var(--green-pastel),
+          var(--pink-pastel)
+        );
+        border-radius: 40px 40px 0 0;
+      }
+
+      /* Corner decorations */
+      .corner-deco {
+        position: absolute;
+        font-size: 2.6rem;
+        opacity: 0.5;
+        pointer-events: none;
+      }
+      .corner-deco.tl {
+        top: 18px;
+        left: 22px;
+        transform: rotate(-15deg);
+      }
+      .corner-deco.tr {
+        top: 18px;
+        right: 22px;
+        transform: rotate(15deg);
+      }
+      .corner-deco.bl {
+        bottom: 18px;
+        left: 22px;
+        transform: rotate(15deg);
+      }
+      .corner-deco.br {
+        bottom: 18px;
+        right: 22px;
+        transform: rotate(-15deg);
+      }
+
+      /* ===== HEADER ===== */
+      .header-badge {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel),
+          var(--purple-pastel)
+        );
+        border-radius: 50px;
+        padding: 6px 20px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--text-dark);
+        margin-bottom: 14px;
+      }
+
+      .main-title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.8rem, 5vw, 3rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+
+      .main-title span {
+        font-style: italic;
+        background: linear-gradient(135deg, #c9a84c, #e8a0b0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .invitation-heading {
+        flex: 1;
+        min-width: 0;
+        text-align: center;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 20px 0;
+      }
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--pink-pastel),
+          transparent
+        );
+      }
+      .divider-icon {
+        font-size: 1.1rem;
+      }
+
+      /* ===== GREETING ===== */
+      .greeting-box {
+        background: linear-gradient(
+          135deg,
+          rgba(249, 208, 218, 0.4),
+          rgba(184, 216, 240, 0.35)
+        );
+        border-radius: 20px;
+        padding: 22px 26px;
+        margin-bottom: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+      }
+      .greeting-to {
+        font-size: 0.82rem;
+        color: var(--text-mid);
+        font-weight: 500;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .guest-name {
+        font-family: var(--font-script);
+        font-size: 1.9rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        display: block;
+      }
+      .greeting-text {
+        font-size: 0.93rem;
+        color: var(--text-mid);
+        margin-top: 10px;
+        line-height: 1.7;
+        font-style: italic;
+      }
+
+      /* ===== GRADUATE PHOTO ===== */
+      .photo-section {
+        flex: 0 0 230px;
+        text-align: center;
+        margin: 0;
+      }
+
+      .photo-frame {
+        position: relative;
+        display: inline-block;
+      }
+
+      .photo-ring {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel),
+          var(--blue-pastel),
+          var(--green-pastel),
+          var(--pink-pastel)
+        );
+        padding: 4px;
+        display: inline-block;
+        box-shadow: 0 12px 40px rgba(180, 160, 200, 0.35);
+        animation: ringPulse 3s ease-in-out infinite;
+      }
+      @keyframes ringPulse {
+        0%,
+        100% {
+          box-shadow: 0 12px 40px rgba(180, 160, 200, 0.35);
+        }
+        50% {
+          box-shadow: 0 16px 50px rgba(220, 180, 220, 0.5);
+        }
+      }
+
+      .photo-inner {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        background: var(--cream);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .photo-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 8px;
+      }
+      .photo-placeholder-icon {
+        font-size: 3rem;
+      }
+      .photo-placeholder-text {
+        font-size: 0.72rem;
+        color: #bbb;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      .photo-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      /* Floating elements around photo */
+      .photo-float {
+        position: absolute;
+        font-size: 1.8rem;
+        animation: photoFloat 2.5s ease-in-out infinite;
+      }
+      .photo-float:nth-child(2) {
+        top: -10px;
+        right: -14px;
+        animation-delay: 0.4s;
+      }
+      .photo-float:nth-child(3) {
+        bottom: -8px;
+        left: -14px;
+        animation-delay: 0.8s;
+        font-size: 1.5rem;
+      }
+      .photo-float:nth-child(4) {
+        top: 30px;
+        left: -20px;
+        animation-delay: 1.2s;
+        font-size: 1.3rem;
+      }
+      @keyframes photoFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(10deg);
+        }
+      }
+
+      .graduate-name {
+        font-family: var(--font-heading);
+        font-size: clamp(1.2rem, 3vw, 1.7rem);
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-top: 16px;
+        letter-spacing: 0.5px;
+      }
+      .graduate-subtitle {
+        font-size: 0.88rem;
+        color: var(--text-mid);
+        margin-top: 4px;
+      }
+
+      /* ===== SCHOOL PHOTO ===== */
+      .school-photo-wrap {
+        margin: 24px 0;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 30px rgba(160, 140, 200, 0.2);
+        height: 180px;
+        background: var(--cream);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        cursor: default;
+        position: relative;
+      }
+      .school-photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .school-placeholder-icon {
+        font-size: 2.8rem;
+      }
+      .school-placeholder-text {
+        font-size: 0.78rem;
+        color: #bbb;
+      }
+
+      /* ===== INFO SECTIONS ===== */
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin: 28px 0;
+      }
+
+      @media (max-width: 680px) {
+        .hero-header {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .photo-section {
+          flex-basis: auto;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+        .card {
+          padding: 40px 24px 36px;
+        }
+      }
+
+      .info-card {
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 20px;
+        padding: 18px 20px;
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 4px 16px rgba(160, 140, 200, 0.12);
+        transition: transform 0.2s;
+      }
+      .info-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .info-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .info-label {
+        font-size: 0.73rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--text-mid);
+        margin-bottom: 5px;
+      }
+      .info-value {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        line-height: 1.5;
+      }
+
+      .info-value a {
+        color: var(--text-dark);
+        text-decoration: none;
+        border-bottom: 1.5px dashed var(--pink-deep);
+        transition:
+          color 0.2s,
+          border-color 0.2s;
+      }
+      .info-value a:hover {
+        color: var(--pink-deep);
+        border-color: transparent;
+      }
+
+      /* ===== INVITATION TEXT ===== */
+      .invitation-body {
+        background: linear-gradient(
+          135deg,
+          rgba(197, 232, 197, 0.3),
+          rgba(184, 216, 240, 0.3)
+        );
+        border-radius: 20px;
+        padding: 26px 28px;
+        margin: 24px 0;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        text-align: center;
+      }
+      .invitation-body p {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        line-height: 1.85;
+        margin-bottom: 12px;
+      }
+      .invitation-body p:last-child {
+        margin-bottom: 0;
+      }
+      .invitation-highlight {
+        font-family: var(--font-script);
+        font-size: 1.35rem;
+        color: var(--text-dark);
+        font-weight: 600;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 16px;
+        padding: 14px 20px;
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        margin: 20px 0;
+      }
+      .contact-icon {
+        font-size: 1.4rem;
+      }
+      .contact-label {
+        font-size: 0.8rem;
+        color: var(--text-mid);
+      }
+      .contact-number {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        letter-spacing: 1px;
+      }
+
+      /* ===== LETTER SECTION ===== */
+      .letter-section {
+        margin-top: 36px;
+        border-top: 2px dashed rgba(232, 160, 176, 0.4);
+        padding-top: 32px;
+      }
+      .letter-title {
+        font-family: var(--font-script);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+      }
+      .letter-subtitle {
+        font-size: 0.86rem;
+        color: var(--text-mid);
+        margin-bottom: 20px;
+      }
+
+      .letter-from {
+        font-size: 0.82rem;
+        color: var(--text-mid);
+        margin-bottom: 4px;
+      }
+      .letter-from-name {
+        font-family: var(--font-script);
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .letter-textarea {
+        width: 100%;
+        min-height: 140px;
+        padding: 16px 18px;
+        border: 2px solid var(--blue-pastel);
+        border-radius: 18px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        color: var(--text-dark);
+        background: rgba(255, 255, 255, 0.85);
+        resize: vertical;
+        outline: none;
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+        line-height: 1.7;
+      }
+      .letter-textarea:focus {
+        border-color: var(--pink-deep);
+        box-shadow: 0 0 0 3px rgba(232, 160, 176, 0.18);
+      }
+      .letter-textarea::placeholder {
+        color: #c0b8c0;
+        font-style: italic;
+      }
+
+      .letter-btn {
+        margin-top: 14px;
+        padding: 13px 34px;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel) 0%,
+          var(--purple-pastel) 100%
+        );
+        border: none;
+        border-radius: 14px;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--text-dark);
+        cursor: pointer;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 4px 16px rgba(180, 160, 200, 0.3);
+      }
+      .letter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(180, 160, 200, 0.4);
+      }
+
+      .letter-success {
+        display: none;
+        background: linear-gradient(
+          135deg,
+          rgba(197, 232, 197, 0.5),
+          rgba(184, 216, 240, 0.4)
+        );
+        border-radius: 16px;
+        padding: 18px 20px;
+        margin-top: 16px;
+        text-align: center;
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+      }
+      .letter-success-icon {
+        font-size: 2.2rem;
+        margin-bottom: 6px;
+        display: block;
+      }
+      .letter-success-text {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      /* All submitted letters display */
+      .letters-wall {
+        margin-top: 24px;
+      }
+      .letter-card-sent {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 16px;
+        padding: 16px 20px;
+        margin-bottom: 12px;
+        border: 1.5px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 3px 12px rgba(160, 140, 200, 0.1);
+        text-align: left;
+        position: relative;
+      }
+      .letter-card-name {
+        font-family: var(--font-script);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--pink-deep);
+        margin-bottom: 6px;
+      }
+      .letter-card-msg {
+        font-size: 0.88rem;
+        color: var(--text-dark);
+        line-height: 1.7;
+        white-space: pre-wrap;
+      }
+      .letter-card-time {
+        font-size: 0.72rem;
+        color: #bbb;
+        margin-top: 8px;
+      }
+      .letter-card-quote {
+        font-size: 1.3rem;
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        opacity: 0.3;
+      }
+
+      /* ===== FOOTER ===== */
+      .card-footer {
+        text-align: center;
+        margin-top: 32px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(232, 160, 176, 0.3);
+      }
+      .footer-text {
+        font-family: var(--font-script);
+        font-size: 1.1rem;
+        color: var(--text-mid);
+      }
+      .footer-stickers {
+        font-size: 1.5rem;
+        letter-spacing: 4px;
+        margin-top: 6px;
+      }
+
+      /* ===== CONFETTI BURST ===== */
+      .confetti-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 200;
+        overflow: hidden;
+      }
+      .conf-piece {
+        position: absolute;
+        top: -20px;
+        width: 10px;
+        height: 10px;
+        border-radius: 2px;
+        animation: confettiFall linear forwards;
+      }
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* ===== SCROLL ANIMATIONS ===== */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ===== MUSIC PLAYER (top-right widget) ===== */
+      #music-player {
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        pointer-events: auto;
+      }
+
+      /* Mini bubble when collapsed */
+      .mini-bubble {
+        display: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel),
+          var(--blue-pastel)
+        );
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.5rem;
+        box-shadow: 0 6px 24px rgba(180, 160, 200, 0.45);
+        border: 2px solid rgba(255, 255, 255, 0.9);
+        animation: miniPulse 2.2s ease-in-out infinite;
+        transition: transform 0.2s;
+      }
+      .mini-bubble:hover {
+        transform: scale(1.12);
+      }
+      @keyframes miniPulse {
+        0%,
+        100% {
+          box-shadow: 0 6px 24px rgba(180, 160, 200, 0.45);
+        }
+        50% {
+          box-shadow: 0 10px 32px rgba(220, 160, 200, 0.65);
+        }
+      }
+
+      #music-player.mini .player-card {
+        display: none;
+      }
+      #music-player.mini .mini-bubble {
+        display: flex;
+      }
+
+      /* Main player card */
+      .player-card {
+        background: rgba(255, 255, 255, 0.86);
+        backdrop-filter: blur(22px);
+        border: 1.5px solid rgba(255, 255, 255, 0.95);
+        border-radius: 22px;
+        box-shadow:
+          0 10px 40px rgba(180, 160, 200, 0.3),
+          0 2px 8px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        width: 220px;
+      }
+
+      /* Controls row */
+      .player-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        background: linear-gradient(
+          135deg,
+          rgba(249, 208, 218, 0.4),
+          rgba(184, 216, 240, 0.35)
+        );
+      }
+
+      /* Vinyl disc */
+      .vinyl-disc {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: conic-gradient(
+          var(--pink-pastel) 0%,
+          var(--blue-pastel) 33%,
+          var(--green-pastel) 66%,
+          var(--pink-pastel) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        box-shadow: 0 3px 12px rgba(180, 160, 200, 0.35);
+        animation: spinVinyl 5s linear infinite;
+        animation-play-state: paused;
+      }
+      .vinyl-disc.spinning {
+        animation-play-state: running;
+      }
+      @keyframes spinVinyl {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Play/pause button */
+      .play-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(
+          135deg,
+          var(--pink-pastel),
+          var(--purple-pastel)
+        );
+        cursor: pointer;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 10px rgba(180, 160, 200, 0.3);
+        transition:
+          transform 0.18s,
+          box-shadow 0.18s;
+        flex-shrink: 0;
+      }
+      .play-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 16px rgba(180, 160, 200, 0.45);
+      }
+      .play-btn:active {
+        transform: scale(0.95);
+      }
+
+      /* Bars visualizer */
+      .bars-wrap {
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        height: 22px;
+        flex: 1;
+        justify-content: flex-end;
+      }
+      .bar {
+        width: 3px;
+        border-radius: 2px;
+        background: linear-gradient(
+          180deg,
+          var(--pink-deep),
+          var(--blue-pastel)
+        );
+        animation: barDance 0.75s ease-in-out infinite alternate;
+      }
+      .bar:nth-child(1) {
+        height: 7px;
+        animation-duration: 0.55s;
+      }
+      .bar:nth-child(2) {
+        height: 15px;
+        animation-duration: 0.85s;
+        animation-delay: 0.1s;
+      }
+      .bar:nth-child(3) {
+        height: 10px;
+        animation-duration: 0.65s;
+        animation-delay: 0.2s;
+      }
+      .bar:nth-child(4) {
+        height: 18px;
+        animation-duration: 0.95s;
+        animation-delay: 0.05s;
+      }
+      .bar:nth-child(5) {
+        height: 8px;
+        animation-duration: 0.6s;
+        animation-delay: 0.15s;
+      }
+      @keyframes barDance {
+        from {
+          transform: scaleY(0.25);
+          opacity: 0.7;
+        }
+        to {
+          transform: scaleY(1);
+          opacity: 1;
+        }
+      }
+      .bars-wrap.paused .bar {
+        animation-play-state: paused;
+        transform: scaleY(0.25);
+      }
+
+      /* Collapse / minimize button */
+      .collapse-btn {
+        background: rgba(255, 255, 255, 0.7);
+        border: none;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        font-size: 0.65rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-mid);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+        transition: background 0.2s;
+      }
+      .collapse-btn:hover {
+        background: rgba(249, 208, 218, 0.85);
+      }
+
+      /* Progress bar */
+      .progress-wrap {
+        padding: 0 12px 10px;
+        background: linear-gradient(
+          135deg,
+          rgba(249, 208, 218, 0.25),
+          rgba(184, 216, 240, 0.2)
+        );
+      }
+      .progress-bar-bg {
+        width: 100%;
+        height: 4px;
+        border-radius: 4px;
+        background: rgba(180, 160, 200, 0.2);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--pink-pastel),
+          var(--blue-pastel)
+        );
+        transition: width 0.3s linear;
+        width: 0%;
+      }
+
+      /* ===== KARAOKE LYRICS DISPLAY ===== */
+      #lyrics-display {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: min(320px, calc(100vw - 36px));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #lyrics-display.visible {
+        opacity: 1;
+      }
+
+      .lyrics-pill {
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(28px);
+        border: 1.5px solid rgba(255, 255, 255, 0.85);
+        border-radius: 24px;
+        padding: 14px 18px;
+        box-shadow:
+          0 8px 40px rgba(160, 140, 200, 0.28),
+          0 2px 8px rgba(0, 0, 0, 0.07);
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .lyric-line {
+        font-family: var(--font-body);
+        transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      /* Previous line */
+      .lyric-prev {
+        font-size: 0.82rem;
+        color: rgba(107, 122, 141, 0.55);
+        transform: translateY(0);
+      }
+      /* Current line — highlight */
+      .lyric-curr {
+        font-size: 1.15rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #c76f93, #5a9fd4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 0.3px;
+        line-height: 1.4;
+        animation: lyricPop 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      @keyframes lyricPop {
+        0% {
+          transform: translateY(12px) scale(0.96);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+      /* Next line */
+      .lyric-next {
+        font-size: 0.82rem;
+        color: rgba(107, 122, 141, 0.55);
+      }
+
+      /* Decorative dots on pill */
+      .lyrics-pill::before {
+        content: "🌷 ✨ 🌸";
+        font-size: 0.7rem;
+        opacity: 0.5;
+        margin-bottom: 2px;
+      }
+
+      @media (max-width: 480px) {
+        #music-player {
+          top: 12px;
+          right: 12px;
+        }
+        .lyrics-pill {
+          padding: 14px 20px;
+        }
+        .lyric-curr {
+          font-size: 0.98rem;
+        }
+        .lyric-prev,
+        .lyric-next {
+          font-size: 0.72rem;
+        }
+        .player-card {
+          width: 190px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== AUDIO ELEMENT ========== -->
+    <audio id="bgAudio" src="Centuries.mp3" loop preload="auto"></audio>
+
+    <!-- ========== MUSIC PLAYER (top-right) ========== -->
+    <div id="music-player">
+      <!-- Collapsed bubble -->
+      <div
+        class="mini-bubble"
+        onclick="expandPlayer()"
+        title="Mở trình phát nhạc"
+      >
+        🎵
+      </div>
+
+      <!-- Full card -->
+      <div class="player-card">
+        <div class="player-controls">
+          <!-- Spinning vinyl -->
+          <div class="vinyl-disc" id="vinylDisc">🌷</div>
+
+          <!-- Play / Pause -->
+          <button class="play-btn" id="playBtn" onclick="togglePlay()">
+            ▶
+          </button>
+
+          <!-- Equalizer bars -->
+          <div class="bars-wrap paused" id="barsWrap">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+
+          <!-- Collapse -->
+          <button
+            class="collapse-btn"
+            onclick="collapsePlayer()"
+            title="Thu nhỏ"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="progress-wrap">
+          <div
+            class="progress-bar-bg"
+            id="progressBg"
+            onclick="seekAudio(event)"
+          >
+            <div class="progress-bar-fill" id="progressFill"></div>
+          </div>
+        </div>
+      </div>
+      <!-- ========== KARAOKE LYRICS DISPLAY ========== -->
+      <div id="lyrics-display">
+        <div class="lyrics-pill">
+          <div class="lyric-line lyric-prev" id="lyricPrev"></div>
+          <div class="lyric-line lyric-curr" id="lyricCurr"></div>
+          <div class="lyric-line lyric-next" id="lyricNext"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== FLOATING STICKERS BACKGROUND ========== -->
+    <div class="sticker-bg" id="stickerBg"></div>
+
+    <!-- ========== CONFETTI ========== -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- ========== LOGIN PAGE ========== -->
+    <div id="login-page">
+      <div class="login-card">
+        <span class="login-icon">🌷</span>
+        <h1 class="login-title">Thiệp Mời Tốt Nghiệp</h1>
+        <p class="login-sub">
+          Bạn đang được mời đến lễ tốt nghiệp đặc biệt! 🎓<br />Vui lòng nhập
+          tên bạn để xem thiệp nhé 💌
+        </p>
+
+        <label class="login-label" for="guestNameInput">✨ Tên của bạn</label>
+        <input
+          type="text"
+          id="guestNameInput"
+          class="login-input"
+          placeholder="Ví dụ: Trúc Phương..."
+          maxlength="60"
+          autocomplete="off"
+        />
+
+        <button class="login-btn" onclick="handleLogin()">
+          🌷 Xem Thiệp Mời
+        </button>
+        <p class="login-error" id="loginError">
+          😗 Vui lòng nhập tên của bạn trước nhé!
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== MAIN INVITATION ========== -->
+    <div id="invitation">
+      <div class="card-wrapper">
+        <!-- Floating page-level stickers -->
+        <div
+          style="
+            position: absolute;
+            top: -30px;
+            left: -20px;
+            font-size: 3rem;
+            opacity: 0.5;
+            transform: rotate(-20deg);
+            pointer-events: none;
+            animation: floatSticker 3s ease-in-out infinite;
+          "
+        >
+          🌷
+        </div>
+        <div
+          style="
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            font-size: 2.5rem;
+            opacity: 0.45;
+            transform: rotate(15deg);
+            pointer-events: none;
+            animation: floatSticker 3.5s ease-in-out infinite 0.6s;
+          "
+        >
+          🌸
+        </div>
+        <div
+          style="
+            position: absolute;
+            top: 40%;
+            left: -40px;
+            font-size: 2rem;
+            opacity: 0.4;
+            pointer-events: none;
+            animation: floatSticker 4s ease-in-out infinite 1s;
+          "
+        >
+          ✨
+        </div>
+        <div
+          style="
+            position: absolute;
+            top: 60%;
+            right: -30px;
+            font-size: 2.2rem;
+            opacity: 0.4;
+            pointer-events: none;
+            animation: floatSticker 3.2s ease-in-out infinite 0.3s;
+          "
+        >
+          🎀
+        </div>
+
+        <div class="card">
+          <!-- Corner decorations -->
+          <span class="corner-deco tl">🌷</span>
+          <span class="corner-deco tr">🌸</span>
+          <span class="corner-deco bl">✨</span>
+          <span class="corner-deco br">🎀</span>
+          <!-- ── HEADER & GRADUATE PHOTO ── -->
+          <div class="hero-header fade-in-up">
+            <div class="invitation-heading">
+              <span class="header-badge">🎓 Graduation Ceremony 2026 🎓</span>
+              <h1 class="main-title">Thiệp Mời<br /><span>Tốt Nghiệp</span></h1>
+
+              <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-icon">🌷</span>
+                <div class="divider-line"></div>
+              </div>
+              <h2 class="graduate-name">Biện Thị Trúc Phương</h2>
+            </div>
+            <div class="photo-section">
+              <div class="photo-frame">
+                <div class="photo-ring">
+                  <div class="photo-inner" id="graduatePhotoWrap">
+                    <img src="se171613.jpg" alt="Biện Thị Trúc Phương" />
+                  </div>
+                </div>
+                <span class="photo-float">🌷</span>
+                <span class="photo-float">⭐</span>
+                <span class="photo-float">🌸</span>
+              </div>
+
+              <!-- <h2 class="graduate-name">Biện Thị Trúc Phương</h2> -->
+              <!-- <p class="graduate-subtitle">
+                🌿 Cử Nhân &nbsp;·&nbsp; Đại Học FPT &nbsp;·&nbsp; 2026 🌿
+              </p> -->
+            </div>
+          </div>
+
+          <!-- ── GREETING ── -->
+          <div class="greeting-box fade-in-up">
+            <p class="greeting-to">💌 Thân gửi</p>
+            <span class="guest-name" id="guestDisplayName">Bạn thân mến</span>
+            <p class="greeting-text">
+              Thật vui và hạnh phúc khi được chia sẻ khoảnh khắc ý nghĩa này
+              cùng bạn. Với tất cả tình cảm trân quý, mình xin trân trọng thân
+              mời bạn đến tham dự Lễ Tốt Nghiệp — một cột mốc đáng nhớ trong
+              cuộc đời mình! <br />
+              Sự hiện diện của bạn sẽ là món quà ý nghĩa nhất dành cho mình
+              trong ngày trọng đại này. Mình rất mong được gặp bạn! 💖
+            </p>
+          </div>
+
+          <!-- ── SCHOOL PHOTO ── -->
+          <div class="fade-in-up">
+            <div class="school-photo-wrap" id="schoolPhotoWrap">
+              <img src="fptu.png" alt="Đại học FPT" />
+            </div>
+            <p
+              style="
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--text-mid);
+                margin-top: 8px;
+              "
+            >
+              📍 Buổi lễ diễn ra tại Đại Học FPT TP.HCM
+            </p>
+          </div>
+
+          <!-- ── INVITATION TEXT ── -->
+          <!-- <div class="invitation-body fade-in-up">
+            <p>
+              🌷 Sau những năm tháng nỗ lực không ngừng, vượt qua bao thử thách
+              và tích lũy tri thức, mình đã chính thức hoàn thành hành trình đại
+              học tại <strong>Đại Học FPT</strong> — ngôi trường đã cho mình
+              không chỉ kiến thức mà còn những kỷ niệm đẹp không thể nào quên.
+            </p>
+            <p>
+              ✨ Khoảnh khắc này thật đặc biệt và trọn vẹn hơn khi có bạn —
+              người đã đồng hành và luôn ủng hộ mình trên chặng đường ý nghĩa
+              này.
+            </p>
+            <p class="invitation-highlight">
+              🎉 Mình trân trọng kính mời bạn cùng chia sẻ niềm vui trong ngày
+              lễ tốt nghiệp! 🎉
+            </p>
+            <p>
+              🌸 Sự hiện diện của bạn sẽ là món quà ý nghĩa nhất dành cho mình
+              trong ngày trọng đại này. Mình rất mong được gặp bạn! 💖
+            </p>
+          </div> -->
+
+          <!-- ── EVENT INFO ── -->
+          <div class="info-grid fade-in-up">
+            <div
+              class="info-card"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(249, 208, 218, 0.4),
+                  rgba(255, 255, 255, 0.6)
+                );
+              "
+            >
+              <span class="info-icon">📅</span>
+              <p class="info-label">Thời gian</p>
+              <p class="info-value">
+                Ngày 7 tháng 11<br />Từ 12:00 – 13:30 <br />
+                Hoặc 15:30 - 17:00
+              </p>
+            </div>
+            <div
+              class="info-card"
+              style="
+                /* grid-column: 1/-1; */
+                background: linear-gradient(
+                  135deg,
+                  rgba(197, 232, 197, 0.4),
+                  rgba(255, 255, 255, 0.6)
+                );
+              "
+            >
+              <span class="info-icon">📍</span>
+              <p class="info-label">Địa chỉ</p>
+              <p class="info-value">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Lô+E2a-7+Đường+D1+Khu+Công+nghệ+cao+TP+Thủ+Đức+TP+HCM"
+                  target="_blank"
+                  rel="noopener"
+                  title="Xem trên Google Maps"
+                >
+                  📌 Lô E2a-7, Đường D1, Khu Công nghệ cao,<br />TP. Thủ Đức,
+                  TP.HCM <br /><span
+                    style="font-size: 0.8rem; color: var(--text-mid)"
+                    >(Nhấp để xem bản đồ 🗺️)</span
+                  >
+                </a>
+              </p>
+            </div>
+            <!-- <div
+              class="info-card"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  rgba(184, 216, 240, 0.4),
+                  rgba(255, 255, 255, 0.6)
+                );
+              "
+            >
+              <span class="info-icon">🏫</span>
+              <p class="info-label">Trường tổ chức</p>
+              <p class="info-value">Đại Học FPT<br />TP. Hồ Chí Minh</p>
+            </div> -->
+            <!-- <div
+              class="info-card"
+              style="
+                grid-column: 1/-1;
+                background: linear-gradient(
+                  135deg,
+                  rgba(197, 232, 197, 0.4),
+                  rgba(255, 255, 255, 0.6)
+                );
+              "
+            >
+              <span class="info-icon">📍</span>
+              <p class="info-label">Địa chỉ</p>
+              <p class="info-value">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Lô+E2a-7+Đường+D1+Khu+Công+nghệ+cao+TP+Thủ+Đức+TP+HCM"
+                  target="_blank"
+                  rel="noopener"
+                  title="Xem trên Google Maps"
+                >
+                  📌 Lô E2a-7, Đường D1, Khu Công nghệ cao,<br />TP. Thủ Đức,
+                  TP.HCM <br /><span
+                    style="font-size: 0.8rem; color: var(--text-mid)"
+                    >(Nhấp để xem bản đồ 🗺️)</span
+                  >
+                </a>
+              </p>
+            </div> -->
+          </div>
+
+          <!-- ── CONTACT ── -->
+          <div class="contact-row fade-in-up">
+            <span class="contact-icon">📞</span>
+            <div>
+              <p class="contact-label">Liên hệ &nbsp;·&nbsp; Contact</p>
+              <p class="contact-number">0387 412 289</p>
+            </div>
+            <span style="margin-left: auto; font-size: 1.4rem">💌</span>
+          </div>
+
+          <!-- ── WISH ── -->
+          <!-- <div
+            style="text-align: center; padding: 18px 10px"
+            class="fade-in-up"
+          >
+            <p
+              style="
+                font-family: var(--font-script);
+                font-size: 1.3rem;
+                color: var(--text-dark);
+                line-height: 1.8;
+              "
+            >
+              "Hành trình của ngàn dặm luôn bắt đầu từ một bước chân đầu
+              tiên.<br />
+              Và hôm nay, mình tự hào về hành trình mình đã đi." 🌷
+            </p>
+            <p
+              style="
+                font-size: 0.82rem;
+                color: var(--text-mid);
+                margin-top: 8px;
+              "
+            >
+              — Biện Thị Trúc Phương
+            </p>
+          </div> -->
+
+          <!-- ── LETTER SECTION ── -->
+          <div class="letter-section fade-in-up">
+            <div style="text-align: center; margin-bottom: 22px">
+              <!-- <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-icon">💌</span>
+                <div class="divider-line"></div>
+              </div> -->
+              <h3 class="letter-title">Gửi Tâm Thư Đến Phương</h3>
+              <p class="letter-subtitle">
+                Hãy để lại lời chúc mừng, chia sẻ kỷ niệm hoặc những điều muốn
+                nói 💖
+              </p>
+              <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-icon">💌</span>
+                <div class="divider-line"></div>
+              </div>
+            </div>
+
+            <p class="letter-from">✍️ Người gửi</p>
+            <span class="letter-from-name" id="letterFromName"
+              >Bạn thân mến</span
+            >
+
+            <textarea
+              class="letter-textarea"
+              id="letterText"
+              maxlength="5000"
+              placeholder="Viết những điều bạn muốn nói với Phương nhân ngày tốt nghiệp... Lời chúc, kỷ niệm, hay bất kỳ điều gì từ trái tim 💖"
+            ></textarea>
+
+            <div style="text-align: center">
+              <button class="letter-btn" onclick="sendLetter()">
+                💌 Gửi Tâm Thư
+              </button>
+            </div>
+
+            <div class="letter-success" id="letterSuccess">
+              <span class="letter-success-icon">🎉</span>
+              <p class="letter-success-text">
+                Tâm thư của bạn đã được gửi đến Phương!<br />
+                Cảm ơn bạn rất nhiều vì những lời yêu thương 💖🌷
+              </p>
+            </div>
+
+            <!-- Display sent letters -->
+            <div class="letters-wall" id="lettersWall"></div>
+          </div>
+
+          <!-- ── FOOTER ── -->
+          <div class="card-footer fade-in-up">
+            <p class="footer-text">
+              Trân trọng & yêu thương ✨ Biện Thị Trúc Phương 🌷
+            </p>
+            <div class="footer-stickers">🌷🎓🌸✨🎀</div>
+            <p style="font-size: 0.75rem; color: #ccc; margin-top: 12px">
+              Đại Học FPT · Lễ Tốt Nghiệp 2026
+            </p>
+          </div>
+        </div>
+        <!-- /card -->
+      </div>
+      <!-- /card-wrapper -->
+    </div>
+    <!-- /invitation -->
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCAc2uw1-1ZC-1BpsBXZTzjGFaHF-g2d4vk",
+        authDomain: "graduation-ceremony-92583.firebaseapp.com",
+        projectId: "graduation-ceremony-92583",
+        storageBucket: "graduation-ceremony-92583.firebasestorage.app",
+        messagingSenderId: "469787775101",
+        appId: "1:469787775101:web:e44666b77d376c52b82114",
+        measurementId: "G-R2MWRN5ENC",
+      };
+
+      window.firebaseReady = Promise.all([
+        import("https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js"),
+        import("https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js"),
+        import("https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js"),
+      ])
+        .then(async ([appSdk, authSdk, firestoreSdk]) => {
+          const app = appSdk.initializeApp(firebaseConfig);
+          const auth = authSdk.getAuth(app);
+          const db = firestoreSdk.getFirestore(app);
+          const lettersCollection = firestoreSdk.collection(
+            db,
+            "graduation_letters",
+          );
+
+          await authSdk.signInAnonymously(auth);
+
+          return {
+            async saveLetter(letter) {
+              const letterRef = firestoreSdk.doc(lettersCollection, letter.id);
+              if ((await firestoreSdk.getDoc(letterRef)).exists()) return;
+
+              await firestoreSdk.setDoc(letterRef, {
+                name: letter.name,
+                message: letter.message,
+                time: letter.time,
+                createdAt: firestoreSdk.serverTimestamp(),
+              });
+            },
+            async getLetters() {
+              const lettersQuery = firestoreSdk.query(
+                lettersCollection,
+                firestoreSdk.orderBy("createdAt", "desc"),
+              );
+              const snapshot = await firestoreSdk.getDocs(lettersQuery);
+              return snapshot.docs.map((letterDoc) => ({
+                id: letterDoc.id,
+                ...letterDoc.data(),
+              }));
+            },
+          };
+        })
+        .catch((error) => {
+          console.error("Không thể kết nối Firebase.", error);
+          return null;
+        });
+
+      // ===== STICKER CONFIG =====
+      const STICKERS = [
+        "🌷",
+        "🌸",
+        "🌺",
+        "✨",
+        "⭐",
+        "💫",
+        "🎀",
+        "🎊",
+        "🎉",
+        "💐",
+        "🍃",
+        "🌿",
+        "🦋",
+        "🌼",
+        "💖",
+        "🌙",
+        "☁️",
+        "🪷",
+      ];
+
+      function createBgStickers() {
+        const bg = document.getElementById("stickerBg");
+        for (let i = 0; i < 28; i++) {
+          const s = document.createElement("div");
+          s.className = "sticker";
+          s.textContent = STICKERS[Math.floor(Math.random() * STICKERS.length)];
+          s.style.left = Math.random() * 100 + "vw";
+          s.style.top = Math.random() * 100 + "vh";
+          s.style.fontSize = 1.2 + Math.random() * 1.8 + "rem";
+          s.style.animationDuration = 4 + Math.random() * 5 + "s";
+          s.style.animationDelay = Math.random() * 4 + "s";
+          bg.appendChild(s);
+        }
+      }
+      createBgStickers();
+
+      // ===== LOGIN =====
+      let currentGuestName = "";
+
+      document
+        .getElementById("guestNameInput")
+        .addEventListener("keydown", function (e) {
+          if (e.key === "Enter") handleLogin();
+        });
+
+      function handleLogin() {
+        const val = document.getElementById("guestNameInput").value.trim();
+        if (!val) {
+          const err = document.getElementById("loginError");
+          err.style.display = "block";
+          document.getElementById("guestNameInput").focus();
+          return;
+        }
+        currentGuestName = val;
+
+        // Update guest name displays
+        document.getElementById("guestDisplayName").textContent = val;
+        document.getElementById("letterFromName").textContent = val;
+
+        // Hide login, show invitation
+        const loginPage = document.getElementById("login-page");
+        loginPage.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        loginPage.style.opacity = "0";
+        loginPage.style.transform = "scale(0.96)";
+        setTimeout(() => {
+          loginPage.style.display = "none";
+          const inv = document.getElementById("invitation");
+          inv.style.display = "block";
+          inv.style.opacity = "0";
+          inv.style.transition = "opacity 0.8s ease";
+          setTimeout(() => {
+            inv.style.opacity = "1";
+          }, 50);
+          initScrollFade();
+          loadLetters();
+          launchConfetti();
+        }, 600);
+      }
+
+      // ===== SCROLL FADE =====
+      function initScrollFade() {
+        const els = document.querySelectorAll(".fade-in-up");
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e, i) => {
+              if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add("visible"), i * 100);
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        els.forEach((el) => obs.observe(el));
+        // Immediately trigger for visible ones
+        setTimeout(() => {
+          els.forEach((el) => {
+            const r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight) el.classList.add("visible");
+          });
+        }, 100);
+      }
+
+      // ===== CONFETTI =====
+      function launchConfetti() {
+        const container = document.getElementById("confettiContainer");
+        const colors = [
+          "#f9d0da",
+          "#b8d8f0",
+          "#c5e8c5",
+          "#d8c8f0",
+          "#ffe4b5",
+          "#fff0a0",
+        ];
+        for (let i = 0; i < 80; i++) {
+          setTimeout(() => {
+            const p = document.createElement("div");
+            p.className = "conf-piece";
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.background =
+              colors[Math.floor(Math.random() * colors.length)];
+            p.style.width = 6 + Math.random() * 8 + "px";
+            p.style.height = 6 + Math.random() * 8 + "px";
+            p.style.borderRadius = Math.random() > 0.5 ? "50%" : "2px";
+            p.style.animationDuration = 2 + Math.random() * 3 + "s";
+            p.style.animationDelay = "0s";
+            container.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+          }, i * 60);
+        }
+        // Auto-start music after confetti
+        autoStartMusic();
+      }
+
+      // ===== LETTER =====
+      function getStoredLetters() {
+        const raw = localStorage.getItem("graduation_letters");
+        if (raw === null) return [];
+
+        const stored = JSON.parse(raw);
+        if (
+          !Array.isArray(stored) ||
+          stored.some(
+            (letter) =>
+              !letter ||
+              typeof letter.name !== "string" ||
+              typeof letter.message !== "string" ||
+              typeof letter.time !== "string" ||
+              (letter.id !== undefined && typeof letter.id !== "string") ||
+              (letter.synced !== undefined &&
+                typeof letter.synced !== "boolean"),
+          )
+        ) {
+          throw new Error("Dữ liệu tâm thư đã lưu không đúng định dạng.");
+        }
+
+        return stored;
+      }
+
+      function createLetterId() {
+        if (typeof crypto !== "undefined" && crypto.randomUUID) {
+          return crypto.randomUUID();
+        }
+        return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      }
+
+      async function sendLetter() {
+        const txt = document.getElementById("letterText").value.trim();
+        if (!txt) {
+          alert("💌 Hãy viết điều gì đó cho Phương nhé!");
+          return;
+        }
+
+        if (currentGuestName.length > 100 || txt.length > 5000) {
+          alert(
+            "Tên người gửi tối đa 100 ký tự và tâm thư tối đa 5.000 ký tự.",
+          );
+          return;
+        }
+
+        const sendButton = document.querySelector(".letter-btn");
+        if (sendButton.disabled) return;
+        sendButton.disabled = true;
+
+        let stored = [];
+        let letter;
+        let localCacheSaved = false;
+        try {
+          stored = getStoredLetters();
+          stored = stored.map((storedLetter) => ({
+            ...storedLetter,
+            id: storedLetter.id || createLetterId(),
+            synced: storedLetter.synced === true,
+          }));
+          letter = stored.find(
+            (storedLetter) =>
+              !storedLetter.synced &&
+              storedLetter.name === currentGuestName &&
+              storedLetter.message === txt,
+          );
+          if (!letter) {
+            letter = {
+              id: createLetterId(),
+              name: currentGuestName,
+              message: txt,
+              time: new Date().toLocaleString("vi-VN"),
+              synced: false,
+            };
+            stored.unshift(letter);
+          }
+          localStorage.setItem("graduation_letters", JSON.stringify(stored));
+          localCacheSaved = true;
+        } catch (error) {
+          console.error("Không thể lưu tâm thư vào bộ nhớ trình duyệt.", error);
+          letter = {
+            id: createLetterId(),
+            name: currentGuestName,
+            message: txt,
+            time: new Date().toLocaleString("vi-VN"),
+            synced: false,
+          };
+        }
+
+        try {
+          const firebase = await window.firebaseReady;
+          if (!firebase) {
+            throw new Error("Firebase chưa sẵn sàng.");
+          }
+          await firebase.saveLetter(letter);
+        } catch (error) {
+          console.error("Không thể lưu tâm thư lên Firebase.", error);
+          alert(
+            localCacheSaved
+              ? "Tâm thư chưa được đồng bộ lên Firebase nhưng đã được giữ trên thiết bị này. Vui lòng thử gửi lại khi có kết nối."
+              : "Tâm thư chưa được lưu. Nội dung vẫn còn trong ô viết; vui lòng sao chép lại và thử gửi sau.",
+          );
+          sendButton.disabled = false;
+          return;
+        }
+
+        if (localCacheSaved) {
+          if (
+            navigator.storage &&
+            typeof navigator.storage.persist === "function"
+          ) {
+            navigator.storage.persist().catch((error) => {
+              console.warn(
+                "Trình duyệt không cấp quyền giữ bản lưu trên thiết bị lâu dài.",
+                error,
+              );
+            });
+          }
+
+          try {
+            const latest = getStoredLetters();
+            const cachedLetter = latest.find(
+              (storedLetter) => storedLetter.id === letter.id,
+            );
+            if (cachedLetter) {
+              cachedLetter.synced = true;
+              localStorage.setItem(
+                "graduation_letters",
+                JSON.stringify(latest),
+              );
+            }
+          } catch (error) {
+            console.warn(
+              "Không thể cập nhật bản lưu tâm thư trên thiết bị.",
+              error,
+            );
+          }
+        }
+
+        sendButton.disabled = false;
+        const success = document.getElementById("letterSuccess");
+        success.style.display = "block";
+        success.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        document.getElementById("letterText").value = "";
+        await loadLetters();
+        launchConfetti();
+      }
+
+      async function loadLetters() {
+        const wall = document.getElementById("lettersWall");
+        let stored = [];
+        let localCacheAvailable = true;
+        try {
+          stored = getStoredLetters();
+          let cacheChanged = false;
+          stored = stored.map((letter) => {
+            if (!letter.id || letter.synced === undefined) {
+              cacheChanged = true;
+              return {
+                ...letter,
+                id: letter.id || createLetterId(),
+                synced: letter.synced === true,
+              };
+            }
+            return letter;
+          });
+          if (cacheChanged) {
+            localStorage.setItem("graduation_letters", JSON.stringify(stored));
+          }
+        } catch (error) {
+          console.error("Không thể đọc tâm thư từ bộ nhớ trình duyệt.", error);
+          localCacheAvailable = false;
+        }
+
+        try {
+          const firebase = await window.firebaseReady;
+          if (!firebase) {
+            throw new Error("Firebase chưa sẵn sàng.");
+          }
+
+          if (localCacheAvailable) {
+            for (const letter of stored) {
+              if (letter.synced) continue;
+              try {
+                await firebase.saveLetter(letter);
+                letter.synced = true;
+                localStorage.setItem(
+                  "graduation_letters",
+                  JSON.stringify(stored),
+                );
+              } catch (error) {
+                console.error(
+                  "Không thể đồng bộ tâm thư cũ lên Firebase.",
+                  error,
+                );
+              }
+            }
+          }
+
+          const remoteLetters = await firebase.getLetters();
+          const remoteIds = new Set(remoteLetters.map((letter) => letter.id));
+          const pendingLetters = localCacheAvailable
+            ? stored.filter(
+                (letter) => !letter.synced && !remoteIds.has(letter.id),
+              )
+            : [];
+          const letters = [...pendingLetters, ...remoteLetters];
+          renderLetters(
+            wall,
+            letters,
+            pendingLetters.length
+              ? `${pendingLetters.length} tâm thư chưa đồng bộ được; bản lưu trên thiết bị vẫn được giữ.`
+              : "",
+          );
+        } catch (error) {
+          console.error("Không thể tải tâm thư từ Firebase.", error);
+          renderLetters(
+            wall,
+            localCacheAvailable ? stored : [],
+            localCacheAvailable
+              ? "" //"Đang hiển thị bản lưu trên thiết bị; chưa thể kết nối Firebase."
+              : "", //"Không thể đọc tâm thư đã lưu trên thiết bị hoặc kết nối Firebase.",
+          );
+        }
+      }
+
+      function renderLetters(wall, letters, notice = "") {
+        wall.innerHTML =
+          (letters.length
+            ? `
+      <div style="text-align:center;margin:20px 0 14px;">
+        <div class="divider"><div class="divider-line"></div><span class="divider-icon">💌</span><div class="divider-line"></div></div>
+        <p style="font-size:0.82rem;color:var(--text-mid);">Những tâm thư yêu thương (${letters.length})</p>
+      </div>
+    ` +
+              letters
+                .map(
+                  (l) => `
+      <div class="letter-card-sent">
+        <span class="letter-card-quote">❝</span>
+        <p class="letter-card-name">🌷 ${escapeHtml(l.name)}</p>
+        <p class="letter-card-msg">${escapeHtml(l.message)}</p>
+        <p class="letter-card-time">📅 ${escapeHtml(l.time)}</p>
+      </div>
+    `,
+                )
+                .join("")
+            : "") +
+          (notice
+            ? `<p style="text-align:center;color:var(--text-mid);font-size:0.82rem;margin:14px 0;">${escapeHtml(notice)}</p>`
+            : "");
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // ===== MUSIC PLAYER (HTML5 Audio + Karaoke) =====
+
+      // ─────────────────────────────────────────────────────────────────────────
+      // HƯỚNG DẪN ĐIỀN LỜI BÀI HÁT:
+      //  • Mỗi dòng: [giây_bắt_đầu, "lời bài hát"]
+      //  • Mở file Centuries.mp3 bằng VLC hoặc Audacity, tìm thời điểm
+      //    mỗi câu bắt đầu, rồi điền giây tương ứng vào cột đầu tiên.
+      //  • Ví dụ: [12.5, "Some nights I stay up..."]
+      //  • Dòng [0, ""] = khoảng lặng đầu bài (để trống hoặc đặt emoji)
+      // ─────────────────────────────────────────────────────────────────────────
+      const LYRICS = [
+        // ==== ĐIỀN LỜI + THỜI GIAN VÀO ĐÂY ====
+        [0, "🎵"],
+        [4.5, "Some legends are told"],
+        [8.0, "Some turn to dust or to gold"],
+        [10.5, "But you will remember me"],
+        [13.0, "Remember me for centuries"],
+        [16.2, "And just one mistake"],
+        [19.0, "Is all it will take"],
+        [21.8, "We'll go down in history"],
+        [24.0, "Remember me for centuries"],
+        [28.8, "Hey hey hey"],
+        [35.2, "Remember me for centuries"],
+        [39.1, "Mummified my teenage dreams"],
+        [41.9, "No its nothing wrong with me"],
+        [44.7, "The kids are all wrong"],
+        [45.4, "The story's all off"],
+        [47.2, "Heavy metal broke my heart"],
+        [49.0, "Come on, come on and let me in"],
+        [52.8, "Bruises on your thighs"],
+        [53.7, "Like my fingerprints"],
+        [54.4, "And this is supposed to match"],
+        [56.2, "The darkness that you felt"],
+        [57.0, "I never meant for you to fix yourself"],
+        [65.4, "Some legends are told"],
+        [67.9, "Some turn to dust or to gold"],
+        [70.3, "But you will remember me"],
+        [73.8, "Remember me for centuries"],
+        [76.1, "And just one mistake"],
+        [79.9, "Is all it will take"],
+        [81.7, "We'll go down in history"],
+        [84.0, "Remember me for centuries"],
+        [87.6, "Hey hey hey"],
+        [95.1, "Remember me for centuries"],
+        [98.5, "And I can't stop 'til"],
+        [99.2, "The whole world knows my name"],
+        [101.0, "Cause I was only born"],
+        [102.7, "Inside my dreams"],
+        [104.6, "Until you die for me, as long as there's a light"],
+        [106.1, "My shadow's over you"],
+        [108.9, "Cause I am the opposite of amnesia"],
+        [115.5, "And you're a cherry blossom"],
+        [116.3, "You're about to bloom"],
+        [117.0, "You look so pretty but you're gone so soon"],
+        [125.2, "Some legends are told"],
+        [127.8, "Some turn to dust or to gold"],
+        [130.2, "But you will remember me"],
+        [133.6, "Remember me for centuries"],
+        [136.9, "And just one mistake"],
+        [139.7, "Is all it will take"],
+        [141.5, "We'll go down in history"],
+        [144.9, "Remember me for centuries"],
+        [147.4, "Hey hey hey"],
+        [155.9, "Remember me for centuries"],
+        [158.4, "We've been here forever"],
+        [163.4, "And here's the frozen proof"],
+        [169.2, "I could scream forever"],
+        [174.2, "We are the poisoned youth"],
+        [191.0, "Some legends are told"],
+        [193.4, "Some turn to dust or to gold"],
+        [195.9, "But you will remember me"],
+        [199.4, "Remember me for centuries"],
+        [202.7, "And just one mistake"],
+        [204.5, "Is all it will take"],
+        [206.3, "We'll go down in history"],
+        [210.6, "Remember me for centuries"],
+        [213.2, "Hey hey"],
+        [217.0, "Go down in history"],
+        [221.3, "Remember me for centuries"],
+      ];
+      // ─────────────────────────────────────────────────────────────────────────
+
+      const audio = document.getElementById("bgAudio");
+      const playBtn = document.getElementById("playBtn");
+      const vinylDisc = document.getElementById("vinylDisc");
+      const barsWrap = document.getElementById("barsWrap");
+      const progressFill = document.getElementById("progressFill");
+      const lyricsDisp = document.getElementById("lyrics-display");
+      const lyricPrev = document.getElementById("lyricPrev");
+      const lyricCurr = document.getElementById("lyricCurr");
+      const lyricNext = document.getElementById("lyricNext");
+
+      let isPlaying = false;
+      let lastLyricIdx = -1;
+
+      // ── Play / Pause ──
+      function togglePlay() {
+        if (audio.paused) {
+          audio.play().catch(() => {});
+        } else {
+          audio.pause();
+        }
+      }
+
+      audio.addEventListener("play", () => {
+        isPlaying = true;
+        playBtn.textContent = "⏸";
+        vinylDisc.classList.add("spinning");
+        barsWrap.classList.remove("paused");
+        lyricsDisp.classList.add("visible");
+      });
+
+      audio.addEventListener("pause", () => {
+        isPlaying = false;
+        playBtn.textContent = "▶";
+        vinylDisc.classList.remove("spinning");
+        barsWrap.classList.add("paused");
+        lyricsDisp.classList.remove("visible");
+      });
+
+      audio.addEventListener("ended", () => {
+        // loop is set in HTML, but just in case:
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+      });
+
+      // ── Progress bar update ──
+      audio.addEventListener("timeupdate", () => {
+        if (audio.duration) {
+          progressFill.style.width =
+            (audio.currentTime / audio.duration) * 100 + "%";
+        }
+        updateLyrics(audio.currentTime);
+      });
+
+      // ── Seek on click ──
+      function seekAudio(e) {
+        const bg = document.getElementById("progressBg");
+        const rect = bg.getBoundingClientRect();
+        const pct = Math.max(
+          0,
+          Math.min(1, (e.clientX - rect.left) / rect.width),
+        );
+        if (audio.duration) audio.currentTime = pct * audio.duration;
+      }
+
+      // ── Karaoke lyrics sync ──
+      function updateLyrics(t) {
+        if (!LYRICS.length) return;
+
+        // Find the current lyric index
+        let idx = 0;
+        for (let i = 0; i < LYRICS.length; i++) {
+          if (t >= LYRICS[i][0]) idx = i;
+          else break;
+        }
+
+        if (idx === lastLyricIdx) return; // no change
+        lastLyricIdx = idx;
+
+        const prev = idx > 0 ? LYRICS[idx - 1][1] : "";
+        const curr = LYRICS[idx][1];
+        const next = idx < LYRICS.length - 1 ? LYRICS[idx + 1][1] : "";
+
+        lyricPrev.textContent = prev;
+        lyricCurr.textContent = curr;
+        lyricNext.textContent = next;
+
+        // Restart pop animation
+        lyricCurr.style.animation = "none";
+        void lyricCurr.offsetWidth; // reflow
+        lyricCurr.style.animation = "";
+      }
+
+      // ── Auto-play after login ──
+      function autoStartMusic() {
+        setTimeout(() => {
+          audio.play().catch(() => {
+            // Browser blocked autoplay — wait for first user interaction
+            const tryPlay = () => {
+              audio.play().catch(() => {});
+              document.removeEventListener("click", tryPlay);
+            };
+            document.addEventListener("click", tryPlay, { once: true });
+          });
+        }, 1000);
+      }
+
+      // ── Collapse / Expand ──
+      function collapsePlayer() {
+        document.getElementById("music-player").classList.add("mini");
+      }
+      function expandPlayer() {
+        document.getElementById("music-player").classList.remove("mini");
+      }
+    </script>
+  </body>
+</html>
