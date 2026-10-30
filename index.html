@@ -1974,6 +1974,8 @@
               typeof letter.message !== "string" ||
               typeof letter.time !== "string" ||
               (letter.id !== undefined && typeof letter.id !== "string") ||
+              (letter.createdAt !== undefined &&
+                !Number.isFinite(letter.createdAt)) ||
               (letter.synced !== undefined &&
                 typeof letter.synced !== "boolean"),
           )
@@ -1989,6 +1991,36 @@
           return crypto.randomUUID();
         }
         return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      }
+
+      function getLetterTimestamp(letter) {
+        if (Number.isFinite(letter.createdAt)) return letter.createdAt;
+        if (letter.createdAt && typeof letter.createdAt.toMillis === "function") {
+          return letter.createdAt.toMillis();
+        }
+
+        const parsedTime = Date.parse(letter.time);
+        if (Number.isFinite(parsedTime)) return parsedTime;
+
+        const match = letter.time.match(
+          /^(\d{1,2})\/(\d{1,2})\/(\d{4}),?\s+(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(SA|CH)?$/i,
+        );
+        if (!match) return 0;
+
+        const [, day, month, year, rawHours, minutes, seconds = "0", period] =
+          match;
+        let hours = Number(rawHours);
+        if (period?.toUpperCase() === "CH" && hours < 12) hours += 12;
+        if (period?.toUpperCase() === "SA" && hours === 12) hours = 0;
+
+        return new Date(
+          Number(year),
+          Number(month) - 1,
+          Number(day),
+          hours,
+          Number(minutes),
+          Number(seconds),
+        ).getTime();
       }
 
       async function sendLetter() {
@@ -2017,6 +2049,7 @@
           stored = stored.map((storedLetter) => ({
             ...storedLetter,
             id: storedLetter.id || createLetterId(),
+            createdAt: getLetterTimestamp(storedLetter),
             synced: storedLetter.synced === true,
           }));
           letter = stored.find(
@@ -2031,6 +2064,7 @@
               name: currentGuestName,
               message: txt,
               time: new Date().toLocaleString("vi-VN"),
+              createdAt: Date.now(),
               synced: false,
             };
             stored.unshift(letter);
@@ -2044,6 +2078,7 @@
             name: currentGuestName,
             message: txt,
             time: new Date().toLocaleString("vi-VN"),
+            createdAt: Date.now(),
             synced: false,
           };
         }
@@ -2115,11 +2150,16 @@
           stored = getStoredLetters();
           let cacheChanged = false;
           stored = stored.map((letter) => {
-            if (!letter.id || letter.synced === undefined) {
+            if (
+              !letter.id ||
+              letter.createdAt === undefined ||
+              letter.synced === undefined
+            ) {
               cacheChanged = true;
               return {
                 ...letter,
                 id: letter.id || createLetterId(),
+                createdAt: getLetterTimestamp(letter),
                 synced: letter.synced === true,
               };
             }
@@ -2186,15 +2226,19 @@
       }
 
       function renderLetters(wall, letters, notice = "") {
+        const orderedLetters = [...letters].sort(
+          (first, second) =>
+            getLetterTimestamp(second) - getLetterTimestamp(first),
+        );
         wall.innerHTML =
-          (letters.length
+          (orderedLetters.length
             ? `
       <div style="text-align:center;margin:20px 0 14px;">
         <div class="divider"><div class="divider-line"></div><span class="divider-icon">💌</span><div class="divider-line"></div></div>
-        <p style="font-size:0.82rem;color:var(--text-mid);">Những tâm thư yêu thương (${letters.length})</p>
+        <p style="font-size:0.82rem;color:var(--text-mid);">Những tâm thư yêu thương (${orderedLetters.length})</p>
       </div>
     ` +
-              letters
+              orderedLetters
                 .map(
                   (l) => `
       <div class="letter-card-sent">
